@@ -27,14 +27,14 @@
 
 ## GitHub vs Git
 
-| Git | GitHub |
-|---|---|
-| Version control system | Hosting platform |
-| Runs locally on your machine | Cloud service |
+| Git                              | GitHub                                                                    |
+| -------------------------------- | ------------------------------------------------------------------------- |
+| Version control system           | Hosting platform                                                          |
+| Runs locally on your machine     | Cloud service                                                             |
 | Created by Linus Torvalds (2005) | Created by Tom Preston-Werner et al. (2008), acquired by Microsoft (2018) |
-| Open source tool | Commercial product (free tier + paid plans) |
-| Core: commits, branches, merges | Adds: PRs, Issues, Actions, Pages, Projects |
-| Works without internet | Requires internet |
+| Open source tool                 | Commercial product (free tier + paid plans)                               |
+| Core: commits, branches, merges  | Adds: PRs, Issues, Actions, Pages, Projects                               |
+| Works without internet           | Requires internet                                                         |
 
 **Alternatives to GitHub**: GitLab (self-hostable), Bitbucket (Atlassian ecosystem), Gitea (self-hosted), Azure DevOps.
 
@@ -49,16 +49,19 @@ A GitHub repository is a Git repository hosted on GitHub's servers with a web in
 ### Creating a repository
 
 **Via web:**
+
 1. Click "New" on github.com
 2. Name it, choose public/private, optionally initialize with README
 
 **Via GitHub CLI (preferred for developers):**
+
 ```bash
 gh repo create my-project --public --source=. --remote=origin --push
 # Creates the remote repo, sets origin, pushes existing local repo
 ```
 
 **Via git + manual setup:**
+
 ```bash
 git init
 git add .
@@ -86,15 +89,16 @@ github.com/username/repo-name
 
 ## Public vs Private Repositories
 
-| | Public | Private |
-|---|---|---|
-| Visible to | Everyone | Only invited collaborators |
-| Common use | Open source, portfolio | Client work, proprietary code |
-| Free tier | Yes | Yes (with limits on team features) |
-| Can be forked | Yes, by anyone | Only by collaborators |
-| Searchable | Yes | No |
+|               | Public                 | Private                            |
+| ------------- | ---------------------- | ---------------------------------- |
+| Visible to    | Everyone               | Only invited collaborators         |
+| Common use    | Open source, portfolio | Client work, proprietary code      |
+| Free tier     | Yes                    | Yes (with limits on team features) |
+| Can be forked | Yes, by anyone         | Only by collaborators              |
+| Searchable    | Yes                    | No                                 |
 
 ### When to use private vs public
+
 - **Public**: OSS libraries, personal portfolio projects, educational content
 - **Private**: Client projects, internal tools, anything with business logic or secrets
 
@@ -105,6 +109,7 @@ github.com/username/repo-name
 ## The GitHub Interface — Key Areas
 
 ### Code tab
+
 - File browser: navigate your repo's file tree
 - Commit history: per-file or whole-repo
 - Branch selector: switch between branches/tags
@@ -112,17 +117,22 @@ github.com/username/repo-name
 - Green "Code" button: clone URL (HTTPS or SSH)
 
 ### README.md — Your project's front page
+
 Every serious repository has a README. It renders as Markdown on the Code tab.
 
 Good README structure:
+
 ```markdown
 # Project Name
 
 Short description.
 
 ## Installation
+
 ## Usage
+
 ## Contributing
+
 ## License
 ```
 
@@ -133,12 +143,14 @@ Short description.
 Issues are GitHub's built-in task/bug/discussion system.
 
 ### What issues are used for
+
 - Bug reports from users or team members
 - Feature requests
 - Questions and support (smaller projects)
 - Tasks and to-dos linked to code changes
 
 ### Issue anatomy
+
 ```
 Title: [BUG] Login fails with OAuth providers
 Body: Steps to reproduce, expected behavior, actual behavior
@@ -150,7 +162,9 @@ Linked PRs: #145
 ```
 
 ### Labels
+
 Labels categorize issues. Common defaults:
+
 - `bug` — something is broken
 - `enhancement` — feature request
 - `documentation` — docs work needed
@@ -158,6 +172,7 @@ Labels categorize issues. Common defaults:
 - `help wanted` — maintainer wants community help
 
 ### Referencing issues in commits
+
 ```bash
 git commit -m "fix: resolve login error, closes #42"
 # When this commit merges to default branch, GitHub auto-closes issue #42
@@ -166,7 +181,9 @@ git commit -m "fix: resolve login error, closes #42"
 Keywords: `closes`, `fixes`, `resolves` — all auto-close the referenced issue on merge.
 
 ### Issue templates
+
 Large projects use `.github/ISSUE_TEMPLATE/` to enforce structured reports:
+
 ```
 .github/
 └── ISSUE_TEMPLATE/
@@ -181,11 +198,13 @@ Large projects use `.github/ISSUE_TEMPLATE/` to enforce structured reports:
 Pull Requests (PRs) are GitHub's mechanism for proposing, reviewing, and merging code changes.
 
 ### What a PR is
+
 A PR says: "I made changes on branch X, please review and merge them into branch Y."
 
 It is **not** a Git feature — it's a GitHub feature layered on top of Git branches and merges.
 
 ### PR lifecycle
+
 ```
 1. Create feature branch locally
 2. Push branch to GitHub
@@ -201,20 +220,24 @@ It is **not** a Git feature — it's a GitHub feature layered on top of Git bran
 
 ### PR merge strategies (GitHub offers all three)
 
-| Strategy | What it does | When to use |
-|---|---|---|
-| **Merge commit** | Adds a merge commit preserving branch history | Team preference, preserves full context |
-| **Squash and merge** | Collapses all branch commits into one commit | Clean main history, feature work messy |
-| **Rebase and merge** | Replays commits onto main, no merge commit | Linear history advocates |
+| Strategy             | What it does                                  | When to use                             |
+| -------------------- | --------------------------------------------- | --------------------------------------- |
+| **Merge commit**     | Adds a merge commit preserving branch history | Team preference, preserves full context |
+| **Squash and merge** | Collapses all branch commits into one commit  | Clean main history, feature work messy  |
+| **Rebase and merge** | Replays commits onto main, no merge commit    | Linear history advocates                |
 
 ### Draft PRs
+
 Open a PR as "Draft" to signal it's not ready for review:
+
 ```
 [DRAFT] feat: add payment integration
 ```
+
 Used to get early feedback or to trigger CI before the work is complete.
 
 ### Review features
+
 - **Line comments**: comment on specific lines or ranges
 - **Suggestions**: reviewers can propose exact code changes, author can accept with one click
 - **Review status**: Comment / Approve / Request Changes
@@ -235,18 +258,21 @@ Used to get early feedback or to trigger CI before the work is complete.
 A fork is a **copy of a repository under your own GitHub account**.
 
 ### Why forks exist
+
 - You don't have write access to someone else's repo
 - You want to propose changes to an open source project
 - You want your own version of a project to diverge independently
 
 ### Fork vs Branch
-| | Fork | Branch |
-|---|---|---|
-| Lives in | Your GitHub account | Same repo |
-| Use case | External contributor | Team member |
+
+|           | Fork                   | Branch                      |
+| --------- | ---------------------- | --------------------------- |
+| Lives in  | Your GitHub account    | Same repo                   |
+| Use case  | External contributor   | Team member                 |
 | PR target | Original repo's branch | Another branch in same repo |
 
 ### Fork workflow
+
 ```bash
 # 1. Fork on GitHub (click Fork button)
 # 2. Clone YOUR fork
@@ -271,18 +297,22 @@ See `05_Forking_and_Pull_Requests.md` for the complete fork workflow.
 ## Stars and Watchers
 
 ### Stars
+
 - Bookmarking mechanism (like a "favorite")
 - Also a social signal — high star count = popular/trusted project
 - Your starred repos are visible at `github.com/stars`
 - Use them to save projects for later reference
 
 ### Watchers
+
 - Subscribe to all notifications from a repo (issues, PRs, releases, comments)
 - More granular than starring
 - Options: "Not watching" / "Watching" / "Releases only" / "Ignoring"
 
 ### GitHub Notifications
+
 Manage at `github.com/notifications`. Notified when:
+
 - Someone mentions you (`@username`)
 - Someone comments on your issue/PR
 - CI fails on your PR
@@ -296,6 +326,7 @@ Manage at `github.com/notifications`. Notified when:
 ## Releases and Tags
 
 ### Tags
+
 A tag is a named pointer to a specific commit. Used to mark versions.
 
 ```bash
@@ -306,19 +337,23 @@ git push origin --tags              # Push all tags
 ```
 
 ### GitHub Releases
+
 Built on top of Git tags, but adds:
+
 - Release notes (markdown)
 - Binary attachments (compiled executables, build artifacts)
 - Pre-release flag
 - "Latest release" API endpoint
 
 Creating a release:
+
 1. Go to repo → Releases → "Draft a new release"
 2. Create or select a tag (e.g., `v2.0.0`)
 3. Write release notes (GitHub can auto-generate from merged PRs)
 4. Publish
 
 **Semantic Versioning** (`MAJOR.MINOR.PATCH`):
+
 - `MAJOR`: breaking changes
 - `MINOR`: new features, backward-compatible
 - `PATCH`: bug fixes, backward-compatible
@@ -333,6 +368,7 @@ A forum-like space within a repository, separate from Issues.
 - Discussions: open-ended Q&A, announcements, ideas, show-and-tell
 
 Common categories:
+
 - 📣 Announcements
 - 💬 General
 - 💡 Ideas
@@ -348,22 +384,26 @@ Used by large open source projects (React, TypeScript, etc.) to reduce issue noi
 Free static site hosting directly from a GitHub repository.
 
 ### How it works
+
 - GitHub serves files from a specific branch or `/docs` folder
 - Supports custom domains
 - Automatically runs Jekyll (static site generator) if detected
 - Or serve raw HTML/CSS/JS
 
 ### Setup
+
 1. Go to repo → Settings → Pages
 2. Choose branch and folder (root or `/docs`)
 3. Save — your site is live at `username.github.io/repo-name`
 
 ### Use cases
+
 - Project documentation
 - Personal portfolio (`username.github.io`)
 - Static websites for open source libraries
 
 ### With other static site generators
+
 ```yaml
 # .github/workflows/deploy.yml
 # Build with Vite/Next.js/Astro, then deploy to Pages
@@ -376,6 +416,7 @@ Free static site hosting directly from a GitHub repository.
 GitHub Actions is a CI/CD and automation platform built into GitHub.
 
 ### Core concepts
+
 - **Workflow**: A YAML file in `.github/workflows/` that defines automation
 - **Trigger (on)**: What causes the workflow to run (push, PR, schedule, manual)
 - **Job**: A group of steps that run on the same machine
@@ -384,6 +425,7 @@ GitHub Actions is a CI/CD and automation platform built into GitHub.
 - **Runner**: The machine that runs your job (GitHub-hosted or self-hosted)
 
 ### Basic workflow example
+
 ```yaml
 # .github/workflows/ci.yml
 name: CI
@@ -399,16 +441,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4          # Check out your code
-      - uses: actions/setup-node@v4        # Install Node.js
+      - uses: actions/checkout@v4 # Check out your code
+      - uses: actions/setup-node@v4 # Install Node.js
         with:
-          node-version: '20'
-      - run: npm ci                         # Install dependencies
-      - run: npm test                       # Run tests
-      - run: npm run build                  # Build
+          node-version: "20"
+      - run: npm ci # Install dependencies
+      - run: npm test # Run tests
+      - run: npm run build # Build
 ```
 
 ### Common use cases
+
 - Run tests on every PR (block merging if tests fail)
 - Lint and type-check code
 - Auto-deploy to Vercel, Netlify, AWS on push to main
@@ -425,6 +468,7 @@ See `10_Deployment_and_Team_Workflows.md` for detailed Actions patterns.
 The green grid on your GitHub profile — shows your commit/PR/review/issue activity over the past year.
 
 ### What counts as a contribution
+
 - Commits to default branch or gh-pages
 - Opening issues
 - Opening pull requests
@@ -432,6 +476,7 @@ The green grid on your GitHub profile — shows your commit/PR/review/issue acti
 - Commits to a fork that are merged upstream
 
 ### What does NOT count
+
 - Commits to branches that aren't the default branch
 - Commits to forks where you haven't opened a PR
 - Commits before account ownership (transferred repos)
@@ -439,6 +484,7 @@ The green grid on your GitHub profile — shows your commit/PR/review/issue acti
 
 > **Common issue**: Your commits don't appear in the graph.  
 > Fix: ensure your Git `user.email` matches your GitHub primary/verified email.
+>
 > ```bash
 > git config --global user.email "your@github-email.com"
 > ```
@@ -477,16 +523,21 @@ gh release create v1.0.0               # Create release
 ## Security Features
 
 ### Dependabot
+
 Automatically opens PRs to update vulnerable dependencies. Configure in `.github/dependabot.yml`.
 
 ### Secret scanning
+
 GitHub scans for accidentally committed secrets (API keys, tokens). Alerts you and may notify the secret provider.
 
 ### Code scanning (CodeQL)
+
 Static analysis to find security vulnerabilities in your code. Integrate via GitHub Actions.
 
 ### Branch protection rules
+
 Under repo Settings → Branches:
+
 - Require PR before merging
 - Require status checks (CI must pass)
 - Require signed commits
@@ -520,4 +571,4 @@ Recommended protection for main:
 
 ---
 
-*Next: `03_Git_Commands_CheatSheet.md` — Every important Git command, organized and searchable*
+_Next: `03_Git_Commands_CheatSheet.md` — Every important Git command, organized and searchable_
