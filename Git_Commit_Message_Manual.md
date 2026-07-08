@@ -492,3 +492,65 @@ refactor(cart): simplify checkout logic
 chore(deps): update React Router
 test(auth): add login tests
 ```
+
+
+
+### Summary 
+```text
+
+Format - 
+type(scope): short description
+Example:
+feat(auth): add login page
+
+This cover 95% of real-world commits
+1. feat -> Add a new feature to the codebase
+2. fix -> Patch a bug or resolve an issue
+3. docs -> Update documentation, markdown files, or code comments
+4. refactor -> Rewrite or restructure code without changing its external behavior
+5. style -> Modify UI layout, formatting, or code whitespace without functional changes
+6. test -> Add, update, or fix test suites and validation cases
+7. chore -> Perform routine tasks, maintenance, or build process updates
+8. perf -> Optimize code performance, speed, or resource consumption
+9. build -> Modify build tools, configurations, or external scripts
+10. ci -> Update continuous integration scripts and deployment workflows
+11. revert -> Roll back a previous commit or change
+12. hotfix -> Apply an urgent patch directly to production code
+13. wip -> Save a temporary checkpoint for work currently in progress
+14. init -> Create the initial repository structure or first project commit
+15. release -> Package, tag, or deploy a specific version of the application
+16. merge -> Combine separate branches together
+17. security -> Resolve vulnerabilities, patch leaks, or improve token validation
+18. deps -> Upgrade, downgrade, or update package dependency versions
+19. config -> Modify environment variables, system settings, or API parameters
+20. ux -> Enhance the user interface flow, accessibility, or overall user experience
+21. ops -> Update server infrastructure, container orchestration, or live operations setups
+22. arch -> Restructure structural service layers, system design, or folder hierarchies
+23. bump -> Increment version numbers or release tags
+24. seed -> Populate the database with initial dummy, lookup, or test data
+25. sample -> Add example payload files, mock requests, or mock responses
+26. lint -> Fix code styling errors, formatting issues, or linter warnings without changing logic
+27. typo -> Fix minor spelling mistakes in code, comments, or UI text
+28. i18n -> Add or update internationalization, translations, or language files
+29. l10n -> Handle localization changes for specific regions (currencies, date formats)
+30. infra -> Modify Infrastructure-as-Code setups like Terraform, AWS configs, or Docker networks (separate from dev ops)
+31. vendor -> Update third-party binaries, libraries, or vendored dependencies managed directly in the repo
+32. cleanup -> Remove dead code, deleted assets, or unused files from the directory
+33. feat! -> Introduce a breaking change with a new feature
+34. fix! -> Introduce a breaking change while fixing something
+35. BREAKING CHANGE -> Describe incompatible API or behavior changes in the commit body/footer
+36. db -> Database schema changes, migrations, or indexes
+37. ui -> User interface changes (some teams use this instead of ux)
+38. api -> API contract or endpoint changes
+39. assets -> Images, fonts, icons, media, and static resources
+40. move -> Rename or relocate files and directories
+41. remove -> Delete features, modules, or files
+42. experiment -> Prototypes, spikes, or proof-of-concepts
+43. sync -> Synchronization with upstream repositories or generated content
+44. proto -> Update Protocol Buffers, OpenAPI schemas, or generated definitions
+45. generated -> Changes to auto-generated files
+46. data -> Update datasets or configuration data
+47. migration -> Database or framework migrations
+48.rollback -> Emergency rollback separate from a normal revert
+
+```
